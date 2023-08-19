@@ -1,0 +1,21 @@
+function hacerSaludo( lenguaje ){
+  return function(){
+    if ( lenguaje === 'en'){
+      console.log('Hi!');
+    }
+
+    if ( lenguaje === 'es'){
+      console.log('Hola!');
+    }
+  }
+}
+
+var saludoIngles = hacerSaludo('en');
+var saludoEspaniol = hacerSaludo('es');
+saludoEspaniol()
+
+/*
+Si pensamos que ocurre cuando ejecutamos esas líneas, vamos a ver que se crearon dos closures. Uno para cada ejecución de la función hacerSaludo, en un closure la variable lenguaje contiene es y en el otro contiene en. Entonces, cuando invoquemos las funciones saludoIngles o saludoEspaniol, el intérprete va a salir a buscar la referencia a esa variable fuera del contexto de ejecución y la va a encontrar en el closure correspondiente.
+
+O sea, que estamos usando el concepto de closure para setear un parámetro para que viva sólo dentro de una función, además nadie puede ingresar al valor de lenguaje, esto agrega un poco de seguridad a nuestro código.*/
+
